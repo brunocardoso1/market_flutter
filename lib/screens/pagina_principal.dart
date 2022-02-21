@@ -7,17 +7,31 @@ class PaginaPrincipal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         backgroundColor: Colors.green,
-        leading: Stack(
+        actions: [
+          IconButton(
+            color: Colors.white,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => (MeuCarrinho())));
+            },
+            icon: Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child:
+        Stack(
           children: [
             Container(
                 child: Text(
-              'Ofertas!',
-              style: TextStyle(
-                fontSize: 15,
-              ),
-              textAlign: TextAlign.start,
-            )),
+                  'Ofertas!',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                  textAlign: TextAlign.start,
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 7),
               child: IconButton(
@@ -29,16 +43,6 @@ class PaginaPrincipal extends StatelessWidget {
             )
           ],
         ),
-        actions: [
-          IconButton(
-            color: Colors.white,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => (MeuCarrinho())));
-            },
-            icon: Icon(Icons.shopping_cart_outlined),
-          ),
-        ],
       ),
       body: Column(
         children: [
