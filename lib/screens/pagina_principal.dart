@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:market_flutter/routes/app_routes.dart';
 import 'package:market_flutter/screens/meu_carrinho.dart';
 import 'package:market_flutter/screens/ofertas.dart';
+import 'package:market_flutter/screens/registrar_produtos.dart';
 
 class PaginaPrincipal extends StatelessWidget {
   @override
@@ -21,28 +23,35 @@ class PaginaPrincipal extends StatelessWidget {
         ],
       ),
       drawer: Drawer(
-        child:
-        Stack(
+        child: ListView(
           children: [
-            Container(
-                child: Text(
-                  'Ofertas!',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                  textAlign: TextAlign.start,
-                )),
-            Padding(
-              padding: const EdgeInsets.only(top: 7),
-              child: IconButton(
-                  icon: Icon(Icons.access_alarm),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => (Ofertas())));
-                  }),
+            const DrawerHeader (
+              decoration: BoxDecoration(
+                color: Colors.lightGreenAccent,
+              ),
+              child: Text("4Health"),
+            ),
+            ListTile(
+              leading: Icon(Icons.access_alarm),
+              title: Text('Ofertas!'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Ofertas()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text("Registrar Produto"),
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRoutes.PRODUCT_FORM);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text("Sair"),
+              onTap: () {},
             )
           ],
-        ),
+        )
       ),
       body: Column(
         children: [
