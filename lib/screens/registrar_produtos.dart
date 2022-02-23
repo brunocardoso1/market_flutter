@@ -3,15 +3,12 @@ import 'package:market_flutter/models/products.dart';
 import 'package:market_flutter/provider/produto.dart';
 import 'package:provider/provider.dart';
 
-
 class RegistrarProdutos extends StatelessWidget {
-
   final _form = GlobalKey<FormState>();
   final Map<String, String> _formData = {};
 
-  void _loadFormDate(Products produto){
-
-    if(produto != null){
+  void _loadFormDate(Products produto) {
+    if (produto != null) {
       _formData['id'] = produto.id;
       _formData['productName'] = produto.productName;
       _formData['valor'] = produto.valor;
@@ -19,21 +16,19 @@ class RegistrarProdutos extends StatelessWidget {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     final Products produto = ModalRoute.of(context).settings.arguments;
 
     _loadFormDate(produto);
-
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Registre os produtos"),
         actions: [
-          IconButton(icon: Icon(Icons.save),
-              onPressed: (){
+          IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
                 final isValid = _form.currentState.validate();
                 if (isValid) {
                   _form.currentState.save();
@@ -47,8 +42,6 @@ class RegistrarProdutos extends StatelessWidget {
                   );
                   Navigator.of(context).pop();
                 }
-
-
               }),
         ],
       ),
@@ -64,11 +57,11 @@ class RegistrarProdutos extends StatelessWidget {
                   labelText: "Nome do produto",
                 ),
                 validator: (value) {
-                  if (value == null || value.trim().isEmpty){
+                  if (value == null || value.trim().isEmpty) {
                     return 'Informe o nome do Produto';
                   }
 
-                  if (value.trim().length <= 3) {
+                  if (value.trim().length <= 6) {
                     return 'Nome muito pequeno. No minimo 3 letras.';
                   }
 

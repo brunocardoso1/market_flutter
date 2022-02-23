@@ -10,7 +10,7 @@ import 'meu_carrinho.dart';
 class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Produtos produtos = Provider.of(context, listen: false);
+    final Produtos produtos = Provider.of(context);
 
     return Scaffold(
         appBar: AppBar(
