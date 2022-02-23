@@ -37,9 +37,10 @@ class Produtos with ChangeNotifier {
               valor: produto.valor,
               productPhoto: produto.productPhoto));
     } else {
+      //adicionar
       final id = Random().nextDouble().toString();
       _items.putIfAbsent(
-          '1000',
+          id,
           () => Products(
                 id: id,
                 productName: produto.productName,

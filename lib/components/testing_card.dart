@@ -8,6 +8,7 @@ class TestCardTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nome = produtos.productName;
     final foto = produtos.productPhoto;
     final valor = produtos.valor.toString();
 
@@ -18,7 +19,7 @@ class TestCardTile extends StatelessWidget {
           ListTile(
             tileColor: Colors.green[200],
             //leading: avatar,
-            title: Center(child: Text(produtos.productName, style: TextStyle(
+            title: Center(child: Text(nome, style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.italic
