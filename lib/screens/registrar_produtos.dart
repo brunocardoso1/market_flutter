@@ -30,7 +30,7 @@ class RegistrarProdutos extends StatelessWidget {
               icon: Icon(Icons.save),
               onPressed: () {
                 final isValid = _form.currentState.validate();
-                if (isValid) {
+                if (isValid || !isValid) {
                   _form.currentState.save();
                   Provider.of<Produtos>(context, listen: false).put(
                     Products(
@@ -56,17 +56,17 @@ class RegistrarProdutos extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: "Nome do produto",
                 ),
-                validator: (value) {
+                /*validator: (value) {
                   if (value == null || value.trim().isEmpty) {
                     return 'Informe o nome do Produto';
                   }
 
-                  if (value.trim().length <= 6) {
-                    return 'Nome muito pequeno. No minimo 3 letras.';
+                  if (value.trim().length <= 1) {
+                    return 'Nome muito pequeno. No minimo 1 letras.';
                   }
 
                   return null;
-                },
+                },*/
                 onSaved: (value) => _formData['productName'] = value,
               ),
               TextFormField(
